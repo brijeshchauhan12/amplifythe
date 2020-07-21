@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-brijeshch-dev-150726-authRole",
+            "UnauthRoleArn": "arn:aws:iam::372907279417:role/amplify-brijeshch-dev-150726-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::372907279417:role/amplify-brijeshch-dev-150726-authRole",
+            "Region": "ap-south-1",
+            "DeploymentBucketName": "amplify-brijeshch-dev-150726-deployment",
+            "UnauthRoleName": "amplify-brijeshch-dev-150726-unauthRole",
+            "StackName": "amplify-brijeshch-dev-150726",
+            "StackId": "arn:aws:cloudformation:ap-south-1:372907279417:stack/amplify-brijeshch-dev-150726/cca67e30-cb35-11ea-a9e2-0a57edc12e34",
+            "AmplifyAppId": "d2m1qt8362a5ss"
+        },
+        "categories": {
+            "auth": {
+                "brijeshch1f1bd3ff": {}
+            }
+        }
+    }
+}

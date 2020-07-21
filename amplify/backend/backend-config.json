@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"brijeshch1f1bd3ff": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
