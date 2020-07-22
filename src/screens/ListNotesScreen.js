@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList,Text, ListItem, Body, View  } from "react-native";
 import { Text, ListItem, Body, View } from "native-base";
 import Header from '../components/Header';
 import API, { graphqlOperation } from '@aws-amplify/api';
@@ -16,7 +16,7 @@ export default class App extends React.Component {
   async componentWillMount() {
     const { navigation } = this.props;
     const notes = await API.graphql(graphqlOperation(queries.notesByUserName, {
-       username: navigation.getParam("username")
+       username: 'brijesh'
        }));
     this.setState({ notes: notes.data.notesByUserName.items });
   }

@@ -16,20 +16,22 @@ import * as mutations from '../graphql/mutations';
 const Dashboard = ({ navigation }) => {
 
   const [note, setNote] = useState({ value: '', error: '' });
-  
+ 
   const noteToSend = {
     description: note.value,
-    username: navigation.getParam('username')
+    username: 'brijesh'
+  
   };
-
+ 
   async function addNote () {
-      await API.graphql(graphqlOperation(mutations.createNote, {input: noteToSend}))
+      await API.graphql(graphqlOperation(mutations.createNote, {input:noteToSend}))
          .then(() => {
           Alert.alert('Note saved')
           setNote('');
         })
         .catch(err => {
           if (! err.message) {
+            console.log(err)
             console.log('  Error while saving the note. ', err)
             alert(' Error while saving the note.')
           } else {
@@ -44,21 +46,21 @@ const Dashboard = ({ navigation }) => {
   const _onAddNotePressed = () => {
 
     const noteError =  nameValidator(note);
-     console.log("hie there")
+     
 
     if (noteError) {
       setNote({ ...note, error: noteError });
-      console.log("an error occured")
+    
       return;
     }
-    console.log("here is the error")
+    
     addNote();
-    console.log('it is working correctly')
+    
   }
 
   //list notes
   const _onListNotesPressed = () => {
-    navigation.navigate('ListNotesScreen', {username:  navigation.getParam('username')}); 
+   navigation.navigate('ListNotesScreen', {username: 'brijesh'}); 
   }
 
   //log out
