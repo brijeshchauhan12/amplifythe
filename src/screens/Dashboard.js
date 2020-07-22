@@ -1,36 +1,3 @@
-// import React, { memo ,useState} from 'react';
-// import Background from '../components/Background';
-// import Logo from '../components/Logo';
-// import Header from '../components/Header';
-// import Paragraph from '../components/Paragraph';
-// import Button from '../components/Button';
-// //amplify
-// import Auth from '@aws-amplify/auth';
-// import API ,{graphqlOperation} from '@aws-amplify/api';
-// import * as mutations from '../graphql/mutations';
-
-// const Dashboard = ({ navigation }) => {
-//   const [note, setNote] = useState({ value: '', error: '' });
-  
-//   const noteToSend = {
-//     description: note.value,
-//     username: navigation.getParam('username')
-//   };
-  
-//   <Background>
-//     <Logo />
-//     <Header>Let’s start</Header>
-//     <Paragraph>
-//       Your amazing app starts here. Open you favourite code editor and start
-//       editing this project.
-//     </Paragraph>
-//     <Button mode="outlined" onPress={() => navigation.navigate('HomeScreen')}>
-//       Logout
-//     </Button>
-//   </Background>
-// };
-
-// export default memo(Dashboard);
 import React, { memo, useState } from 'react';
 import {StyleSheet, Alert} from 'react-native';
 import Background from '../components/Background';
@@ -39,7 +6,7 @@ import Paragraph from '../components/Paragraph';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
-import {noteValidator} from '../core/utils';
+import { nameValidator} from '../core/utils';
 //amplify
 import Auth from '@aws-amplify/auth'
 import API, { graphqlOperation } from '@aws-amplify/api';
@@ -56,15 +23,15 @@ const Dashboard = ({ navigation }) => {
   };
 
   async function addNote () {
-      await API.graphql(graphqlOperation(mutations.createNote, {input: noteToSend}))
+      await API.graphql(graphqlOperation(mutations.createTodo, {input: noteToSend}))
          .then(() => {
           Alert.alert('Note saved')
           setNote('');
         })
         .catch(err => {
           if (! err.message) {
-            console.log('Error while saving the note. ', err)
-            alert('Error while saving the note.')
+            console.log('  Error while saving the note. ', err)
+            alert(' Error while saving the note.')
           } else {
             console.log('Error while saving the note. ', err.message)
             alert('Error while saving the note.')
@@ -75,14 +42,18 @@ const Dashboard = ({ navigation }) => {
 
   //add a note
   const _onAddNotePressed = () => {
-    const noteError = noteValidator(note.value);
+
+    const noteError =  nameValidator(note);
+     console.log("hie there")
 
     if (noteError) {
       setNote({ ...note, error: noteError });
+      console.log("an error occured")
       return;
     }
-
+    console.log("here is the error")
     addNote();
+    console.log('it is working correctly')
   }
 
   //list notes
