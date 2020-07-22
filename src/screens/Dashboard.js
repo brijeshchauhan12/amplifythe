@@ -23,7 +23,7 @@ const Dashboard = ({ navigation }) => {
   };
 
   async function addNote () {
-      await API.graphql(graphqlOperation(mutations.createTodo, {input: noteToSend}))
+      await API.graphql(graphqlOperation(mutations.createNote, {input: noteToSend}))
          .then(() => {
           Alert.alert('Note saved')
           setNote('');
